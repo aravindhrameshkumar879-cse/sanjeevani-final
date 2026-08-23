@@ -1,0 +1,425 @@
+{
+  "patients": [
+    {
+      "_id": "pat-seed-001",
+      "name": "Rameshwar Prasad",
+      "age": 52,
+      "gender": "Male",
+      "phone": "+91 98765 43210",
+      "village": "Rampur Khurd",
+      "abhaId": "91-4829-1029-4820",
+      "createdBy": "ASHA-Pooja-Sharma",
+      "createdAt": "2026-08-23T08:15:00.000Z"
+    },
+    {
+      "_id": "pat-seed-002",
+      "name": "Sunita Devi",
+      "age": 34,
+      "gender": "Female",
+      "phone": "+91 98123 76543",
+      "village": "Sundarpur",
+      "abhaId": "91-3091-8841-7712",
+      "createdBy": "ASHA-Pooja-Sharma",
+      "createdAt": "2026-08-23T08:45:00.000Z"
+    },
+    {
+      "_id": "pat-seed-003",
+      "name": "Kavita Bai",
+      "age": 28,
+      "gender": "Female",
+      "phone": "+91 97654 32190",
+      "village": "Bhimtal Ghat",
+      "abhaId": "91-5512-9901-2311",
+      "createdBy": "ASHA-Pooja-Sharma",
+      "createdAt": "2026-08-23T09:00:00.000Z"
+    },
+    {
+      "_id": "pat-test-101",
+      "name": "Ram Lal Sharma",
+      "age": 58,
+      "gender": "Male",
+      "phone": "+91 98111 22233",
+      "village": "Sundarpur Ward 2",
+      "abhaId": "91-6731-3270-3226",
+      "createdBy": "ASHA-Field-Worker",
+      "createdAt": "2026-08-23T09:38:14Z"
+    },
+    {
+      "_id": "pat-e2e-1787458691465",
+      "name": "Kavita Bai",
+      "age": 48,
+      "gender": "Female",
+      "phone": "+91 98765 99881",
+      "village": "Chandrapur Khurd",
+      "abhaId": "91-5489-7338-1347",
+      "createdBy": "ASHA-Pooja-Sharma",
+      "createdAt": "2026-08-23T04:18:11.465Z"
+    },
+    {
+      "_id": "pat-mt5cxxre-m053x",
+      "name": "Aravindh ",
+      "age": 18,
+      "gender": "Male",
+      "phone": "9363214115",
+      "village": "Rampur Khurd",
+      "abhaId": "91-4829-1029-4820",
+      "createdBy": "ASHA-Pooja-Sharma",
+      "createdAt": "2026-08-23T05:19:27.531Z"
+    }
+  ],
+  "consultations": [
+    {
+      "_id": "cons-e2e-1787462756745",
+      "localQueueId": "cons-e2e-1787462756745",
+      "patientId": "pat-e2e-1787458691465",
+      "patientName": "Kavita Bai",
+      "patientAge": 48,
+      "patientGender": "Female",
+      "patientVillage": "Chandrapur Khurd",
+      "patientPhone": "+91 98765 99881",
+      "patientAbhaId": "91-5489-7338-1347",
+      "symptoms": {
+        "text": "Heavy retrosternal chest pain and cold sweat.",
+        "voiceTranscript": "",
+        "duration": "1 day",
+        "fever": false,
+        "feverDays": 0,
+        "cough": false,
+        "chestPain": true,
+        "sweating": true,
+        "breathingDifficulty": true,
+        "minorAche": false,
+        "vitals": {
+          "bp": "120/80",
+          "pulse": "76",
+          "spo2": "98%",
+          "temp": "98.6°F"
+        }
+      },
+      "priorityTag": "Critical",
+      "triageReason": "Chest pain + sweating + age > 40 [High Acute Coronary Syndrome Risk]",
+      "urgencyScore": 100,
+      "actionAdvice": "IMMEDIATE EMERGENCY: Keep patient at rest, prepare loading dose, alert PHC Doctor and call 108 Ambulance.",
+      "syncStatus": "synced",
+      "createdAt": "2026-08-23T05:25:56.745Z",
+      "syncedAt": "2026-08-23T05:25:56.783Z",
+      "createdBy": "ASHA-Pooja-Sharma",
+      "doctorId": null,
+      "doctorName": null,
+      "consultStatus": "pending",
+      "prescription": null
+    },
+    {
+      "_id": "cons-mt5cxxrf-plmu3",
+      "localQueueId": "cons-mt5cxxrf-plmu3",
+      "patientId": "pat-mt5cxxre-m053x",
+      "patientName": "Aravindh ",
+      "patientAge": 18,
+      "patientGender": "Male",
+      "patientVillage": "Rampur Khurd",
+      "patientPhone": "9363214115",
+      "patientAbhaId": "91-4829-1029-4820",
+      "symptoms": {
+        "text": "இரண்டு நாட்களாக ஃபீவர் உள்ளது",
+        "voiceTranscript": "இரண்டு நாட்களாக ஃபீவர் உள்ளது",
+        "duration": "1 day",
+        "fever": false,
+        "feverDays": 0,
+        "cough": false,
+        "chestPain": false,
+        "sweating": false,
+        "breathingDifficulty": false,
+        "minorAche": true,
+        "vitals": {
+          "bp": "120/80",
+          "pulse": "76",
+          "spo2": "98%",
+          "temp": "98.6°F"
+        }
+      },
+      "priorityTag": "Self-care",
+      "triageReason": "Mild cold / minor body ache / no fever present",
+      "urgencyScore": 20,
+      "actionAdvice": "HOME CARE & REST: Hydration, steam inhalation, ASHA follow-up in 48 hours if symptoms worsen.",
+      "syncStatus": "synced",
+      "createdAt": "2026-08-23T05:19:27.531Z",
+      "syncedAt": "2026-08-23T05:19:27.568Z",
+      "createdBy": "ASHA-Pooja-Sharma",
+      "doctorId": null,
+      "doctorName": null,
+      "consultStatus": "pending",
+      "prescription": null
+    },
+    {
+      "_id": "cons-e2e-1787458691465",
+      "localQueueId": "cons-e2e-1787458691465",
+      "patientId": "pat-e2e-1787458691465",
+      "patientName": "Kavita Bai",
+      "patientAge": 48,
+      "patientGender": "Female",
+      "patientVillage": "Chandrapur Khurd",
+      "patientPhone": "+91 98765 99881",
+      "patientAbhaId": "91-5489-7338-1347",
+      "symptoms": {
+        "text": "Heavy retrosternal chest pain and cold sweat.",
+        "voiceTranscript": "",
+        "duration": "1 day",
+        "fever": false,
+        "feverDays": 0,
+        "cough": false,
+        "chestPain": true,
+        "sweating": true,
+        "breathingDifficulty": true,
+        "minorAche": false,
+        "vitals": {
+          "bp": "120/80",
+          "pulse": "76",
+          "spo2": "98%",
+          "temp": "98.6°F"
+        }
+      },
+      "priorityTag": "Critical",
+      "triageReason": "Chest pain + sweating + age > 40 [High Acute Coronary Syndrome Risk]",
+      "urgencyScore": 100,
+      "actionAdvice": "IMMEDIATE EMERGENCY: Keep patient at rest, prepare loading dose, alert PHC Doctor and call 108 Ambulance.",
+      "syncStatus": "synced",
+      "createdAt": "2026-08-23T04:18:11.465Z",
+      "syncedAt": "2026-08-23T04:18:11.504Z",
+      "createdBy": "ASHA-Pooja-Sharma",
+      "doctorId": null,
+      "doctorName": null,
+      "consultStatus": "pending",
+      "prescription": null
+    },
+    {
+      "_id": "cons-test-sync-101",
+      "localQueueId": "cons-test-sync-101",
+      "patientId": "pat-test-101",
+      "patientName": "Ram Lal Sharma",
+      "patientAge": 58,
+      "patientGender": "Male",
+      "patientVillage": "Sundarpur Ward 2",
+      "patientPhone": "+91 98111 22233",
+      "patientAbhaId": "91-6731-3270-3226",
+      "symptoms": {
+        "text": "",
+        "voiceTranscript": "???? ??? ???? ??? ???? ?? ????? ? ??? ???",
+        "duration": "1 day",
+        "fever": false,
+        "feverDays": 0,
+        "cough": false,
+        "chestPain": true,
+        "sweating": true,
+        "breathingDifficulty": true,
+        "minorAche": false,
+        "vitals": {
+          "pulse": "110",
+          "temp": "98.6�F",
+          "spo2": "92%",
+          "bp": "160/100"
+        }
+      },
+      "priorityTag": "Critical",
+      "triageReason": "Chest pain + sweating + age > 40",
+      "urgencyScore": 100,
+      "actionAdvice": "IMMEDIATE EMERGENCY: Keep patient at rest, prepare loading dose, alert PHC Doctor and call 108 Ambulance.",
+      "syncStatus": "synced",
+      "createdAt": "2026-08-23T09:38:14Z",
+      "syncedAt": "2026-08-23T04:08:15.156Z",
+      "createdBy": "ASHA Worker",
+      "doctorId": null,
+      "doctorName": null,
+      "consultStatus": "pending",
+      "prescription": null
+    },
+    {
+      "_id": "cons-seed-001",
+      "patientId": "pat-seed-001",
+      "patientName": "Rameshwar Prasad",
+      "patientAge": 52,
+      "patientGender": "Male",
+      "patientVillage": "Rampur Khurd",
+      "patientPhone": "+91 98765 43210",
+      "symptoms": {
+        "text": "Severe retrosternal chest pain with profuse cold sweating for 2 hours.",
+        "voiceTranscript": "सीने में बहुत भारीपन और दर्द है, बहुत पसीना आ रहा है और सांस लेने में भी तकलीफ है।",
+        "duration": "2 hours",
+        "feverDays": 0,
+        "chestPain": true,
+        "sweating": true,
+        "breathingDifficulty": true,
+        "fever": false,
+        "cough": false,
+        "minorAche": false,
+        "vitals": {
+          "bp": "150/95",
+          "pulse": "104",
+          "spo2": "94%",
+          "temp": "98.4°F"
+        }
+      },
+      "priorityTag": "Critical",
+      "triageReason": "Chest pain + sweating + age > 40; Difficulty breathing present",
+      "syncStatus": "synced",
+      "createdAt": "2026-08-23T08:15:00.000Z",
+      "syncedAt": "2026-08-23T08:16:10.000Z",
+      "doctorId": "doc-mehta-1",
+      "doctorName": "Dr. Arvind Mehta (MD, AIIMS New Delhi)",
+      "consultStatus": "completed",
+      "prescription": {
+        "medicines": [
+          {
+            "name": "Tab Aspirin",
+            "dosage": "325 mg",
+            "frequency": "Stat chew",
+            "duration": "1 dose",
+            "instructions": "Emergency antiplatelet"
+          },
+          {
+            "name": "Tab Clopidogrel",
+            "dosage": "300 mg",
+            "frequency": "Stat",
+            "duration": "1 dose",
+            "instructions": "Loading dose"
+          },
+          {
+            "name": "Tab Sorbitrate",
+            "dosage": "5 mg",
+            "frequency": "Sublingual stat",
+            "duration": "1 dose",
+            "instructions": "Under tongue for chest pain"
+          }
+        ],
+        "notes": "URGENT: Suspected Acute Coronary Syndrome. Immediate 108 transfer to District Hospital.",
+        "dietAdvice": "Strict NPO. Bed rest.",
+        "doctorId": "doc-mehta-1",
+        "doctorName": "Dr. Arvind Mehta (MD, AIIMS New Delhi)",
+        "pdfUrl": null,
+        "prescribedAt": "2026-08-23T05:17:51.020Z"
+      },
+      "updatedAt": "2026-08-23T05:17:51.020Z"
+    },
+    {
+      "_id": "cons-seed-002",
+      "patientId": "pat-seed-002",
+      "patientName": "Sunita Devi",
+      "patientAge": 34,
+      "patientGender": "Female",
+      "patientVillage": "Sundarpur",
+      "patientPhone": "+91 98123 76543",
+      "symptoms": {
+        "text": "Persistent high grade fever for 4 days with chills and dry cough.",
+        "voiceTranscript": "चार दिन से लगातार तेज बुखार आ रहा है और खांसी भी है।",
+        "duration": "4 days",
+        "feverDays": 4,
+        "chestPain": false,
+        "sweating": false,
+        "breathingDifficulty": false,
+        "fever": true,
+        "cough": true,
+        "minorAche": false,
+        "vitals": {
+          "bp": "118/76",
+          "pulse": "88",
+          "spo2": "98%",
+          "temp": "102.2°F"
+        }
+      },
+      "priorityTag": "Critical",
+      "triageReason": "Fever duration > 3 days (4 days)",
+      "syncStatus": "synced",
+      "createdAt": "2026-08-23T08:45:00.000Z",
+      "syncedAt": "2026-08-23T08:46:00.000Z",
+      "doctorId": null,
+      "doctorName": null,
+      "consultStatus": "pending",
+      "prescription": null
+    },
+    {
+      "_id": "cons-seed-003",
+      "patientId": "pat-seed-003",
+      "patientName": "Kavita Bai",
+      "patientAge": 28,
+      "patientGender": "Female",
+      "patientPhone": "+91 97654 32190",
+      "patientVillage": "Bhimtal Ghat",
+      "symptoms": {
+        "text": "Mild headache and body ache since morning after farm work, no fever.",
+        "voiceTranscript": "सुबह से हल्का सिरदर्द और बदन दर्द है, बुखार नहीं है।",
+        "duration": "1 day",
+        "feverDays": 0,
+        "chestPain": false,
+        "sweating": false,
+        "breathingDifficulty": false,
+        "fever": false,
+        "cough": false,
+        "minorAche": true,
+        "vitals": {
+          "bp": "120/80",
+          "pulse": "72",
+          "spo2": "99%",
+          "temp": "98.6°F"
+        }
+      },
+      "priorityTag": "Self-care",
+      "triageReason": "Mild cold / minor ache / no fever",
+      "syncStatus": "synced",
+      "createdAt": "2026-08-23T09:00:00.000Z",
+      "syncedAt": "2026-08-23T09:01:00.000Z",
+      "doctorId": null,
+      "doctorName": null,
+      "consultStatus": "pending",
+      "prescription": null
+    }
+  ],
+  "syncLogs": [
+    {
+      "id": "sync-ffd29817",
+      "syncedCount": 1,
+      "timestamp": "2026-08-23T05:25:56.784Z",
+      "items": [
+        {
+          "id": "cons-e2e-1787462756745",
+          "patient": "Kavita Bai",
+          "priority": "Critical"
+        }
+      ]
+    },
+    {
+      "id": "sync-1e456bad",
+      "syncedCount": 1,
+      "timestamp": "2026-08-23T05:19:27.568Z",
+      "items": [
+        {
+          "id": "cons-mt5cxxrf-plmu3",
+          "patient": "Aravindh ",
+          "priority": "Self-care"
+        }
+      ]
+    },
+    {
+      "id": "sync-6b036634",
+      "syncedCount": 1,
+      "timestamp": "2026-08-23T04:18:11.504Z",
+      "items": [
+        {
+          "id": "cons-e2e-1787458691465",
+          "patient": "Kavita Bai",
+          "priority": "Critical"
+        }
+      ]
+    },
+    {
+      "id": "sync-f9df00b2",
+      "syncedCount": 1,
+      "timestamp": "2026-08-23T04:08:15.156Z",
+      "items": [
+        {
+          "id": "cons-test-sync-101",
+          "patient": "Ram Lal Sharma",
+          "priority": "Critical"
+        }
+      ]
+    }
+  ]
+}

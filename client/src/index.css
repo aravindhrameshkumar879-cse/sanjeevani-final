@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color-scheme: light dark;
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.5);
+}
+
+/* Glassmorphism & High-contrast Outdoor cards */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 41, 59, 0.8);
+}
+
+/* Pulse glow for critical emergencies */
+.glow-critical {
+  box-shadow: 0 0 25px -3px rgba(220, 38, 38, 0.4);
+}
+
+.glow-synced {
+  box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.3);
+}
+
+/* Voice waveform animation */
+@keyframes voice-bar {
+  0%, 100% { height: 6px; }
+  50% { height: 28px; }
+}
+
+.animate-voice-bar-1 { animation: voice-bar 0.6s ease-in-out infinite 0.1s; }
+.animate-voice-bar-2 { animation: voice-bar 0.8s ease-in-out infinite 0.2s; }
+.animate-voice-bar-3 { animation: voice-bar 0.5s ease-in-out infinite 0.3s; }
+.animate-voice-bar-4 { animation: voice-bar 0.7s ease-in-out infinite 0.15s; }
+.animate-voice-bar-5 { animation: voice-bar 0.9s ease-in-out infinite 0.25s; }
+
+/* Large touch targets for outdoor ASHA workers */
+.touch-target {
+  min-height: 48px;
+  min-width: 48px;
+}
