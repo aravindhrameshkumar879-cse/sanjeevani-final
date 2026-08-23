@@ -26,7 +26,7 @@ import {
 export const LoginScreen = ({ onLoginSuccess, onClose }) => {
   const { language, setLanguage, t, login, refreshData, setRole, setCurrentUser } = useApp();
   const [selectedStaffSubRole, setSelectedStaffSubRole] = useState(null); // null | 'doctor' | 'asha'
-  const [activeModal, setActiveModal] = useState(null); // null | 'patient-login' | 'staff-choice' | 'patient-register' | 'doctor-register'
+  const [activeModal, setActiveModal] = useState(null); // null | 'patient-login' | 'staff-choice' | 'patient-register' | 'doctor-register' | 'asha-register'
   
   // Registration / Custom Form State
   const [formData, setFormData] = useState({
@@ -35,9 +35,63 @@ export const LoginScreen = ({ onLoginSuccess, onClose }) => {
     age: '48',
     gender: 'Female',
     village: 'Rampur Khurd',
-    specialization: 'Internal Medicine & Cardiology',
-    hospitalId: 'AIIMS Rural Tele-Hub'
+    // Doctor Registration Fields
+    doctorName: '',
+    doctorQualification: 'MD (Internal Medicine), AIIMS',
+    doctorSpecialization: 'General Medicine & Critical Triage',
+    doctorHospital: 'Rampur Primary Health Centre Tele-Hub',
+    doctorMci: 'MCI-2024-88492',
+    doctorPhone: '9876543210',
+    // ASHA Registration Fields
+    ashaName: '',
+    ashaVillage: 'Rampur Khurd Sub-Centre',
+    ashaDistrict: 'Varanasi, Uttar Pradesh',
+    ashaId: 'ASHA-UP-5829',
+    ashaPhone: '9812345678'
   });
+
+  const handleRegisterNewDoctor = (e) => {
+    if (e) e.preventDefault();
+    const newDoctor = {
+      _id: `doc-${Date.now()}`,
+      role: 'doctor',
+      name: formData.doctorName ? (formData.doctorName.startsWith('Dr.') ? formData.doctorName : `Dr. ${formData.doctorName}`) : 'Dr. Arvind Mehta (MD, AIIMS)',
+      qualification: formData.doctorQualification || 'MD (Medicine)',
+      specialization: formData.doctorSpecialization || 'General Medicine & Triage',
+      hospitalId: formData.doctorHospital || 'Primary Health Centre Tele-Hub',
+      mciNumber: formData.doctorMci || 'MCI-2024-88492',
+      phone: formData.doctorPhone || '9876543210',
+      avatar: '👨‍⚕️'
+    };
+
+    localStorage.setItem('sanjeevani_user', JSON.stringify(newDoctor));
+    localStorage.setItem('sanjeevani_role', 'doctor');
+    login(newDoctor, 'doctor');
+    refreshData();
+    if (onLoginSuccess) onLoginSuccess(newDoctor, 'doctor');
+    if (onClose) onClose();
+  };
+
+  const handleRegisterNewAsha = (e) => {
+    if (e) e.preventDefault();
+    const newAsha = {
+      _id: `asha-${Date.now()}`,
+      role: 'asha',
+      name: formData.ashaName || 'Pooja Sharma (ASHA Worker)',
+      village: formData.ashaVillage || 'Rampur Khurd Sub-Centre',
+      district: formData.ashaDistrict || 'Varanasi, Uttar Pradesh',
+      ashaId: formData.ashaId || `ASHA-UP-${Math.floor(1000 + Math.random() * 9000)}`,
+      phone: formData.ashaPhone || '9812345678',
+      avatar: '👩‍⚕️'
+    };
+
+    localStorage.setItem('sanjeevani_user', JSON.stringify(newAsha));
+    localStorage.setItem('sanjeevani_role', 'asha');
+    login(newAsha, 'asha');
+    refreshData();
+    if (onLoginSuccess) onLoginSuccess(newAsha, 'asha');
+    if (onClose) onClose();
+  };
 
   const handlePatientContinue = () => {
     const patientUser = {
@@ -340,9 +394,30 @@ export const LoginScreen = ({ onLoginSuccess, onClose }) => {
                   </button>
                 </div>
 
-                <div className="text-center">
+                {/* Staff Registration Buttons */}
+                <div className="grid grid-cols-2 gap-2 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setActiveModal('doctor-register')}
+                    className="py-2.5 px-3 bg-slate-900 hover:bg-slate-850 text-cyan-400 hover:text-cyan-300 rounded-xl text-xs font-bold transition-colors flex items-center justify-center gap-1 border border-cyan-900/60"
+                  >
+                    <UserPlus className="w-3.5 h-3.5" />
+                    <span>➕ Register Doctor</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setActiveModal('asha-register')}
+                    className="py-2.5 px-3 bg-slate-900 hover:bg-slate-850 text-emerald-400 hover:text-emerald-300 rounded-xl text-xs font-bold transition-colors flex items-center justify-center gap-1 border border-emerald-900/60"
+                  >
+                    <UserPlus className="w-3.5 h-3.5" />
+                    <span>➕ Register ASHA</span>
+                  </button>
+                </div>
+
+                <div className="text-center pt-1">
                   <span className="text-[11px] text-slate-500 font-semibold">
-                    1-Click Direct Access to Clinical Dashboards
+                    1-Click Direct Access or Register New Staff Profile
                   </span>
                 </div>
               </div>
@@ -442,6 +517,209 @@ export const LoginScreen = ({ onLoginSuccess, onClose }) => {
                 className="w-full py-3.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black rounded-xl text-sm shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 transition-all"
               >
                 <span>Save Patient & Open Portal</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: Register New Doctor */}
+      {activeModal === 'doctor-register' && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+          <div className="bg-slate-900 w-full max-w-lg rounded-3xl border border-cyan-800/80 p-6 shadow-2xl space-y-5 relative text-slate-100">
+            <button
+              onClick={() => setActiveModal(null)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 rounded-2xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                <Stethoscope className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white">Register Medical Officer / Doctor</h3>
+                <p className="text-xs text-slate-400">Join PHC Rural Tele-Hub Network</p>
+              </div>
+            </div>
+
+            <form onSubmit={handleRegisterNewDoctor} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">
+                  Doctor Full Name <span className="text-red-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={formData.doctorName}
+                  onChange={(e) => setFormData({ ...formData, doctorName: e.target.value })}
+                  placeholder="e.g. Dr. Rajesh Verma"
+                  required
+                  className="w-full px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm font-semibold text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">Medical Degree / Qualification</label>
+                  <input
+                    type="text"
+                    value={formData.doctorQualification}
+                    onChange={(e) => setFormData({ ...formData, doctorQualification: e.target.value })}
+                    placeholder="MD (Medicine), MBBS"
+                    className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">MCI / NMC Reg. No.</label>
+                  <input
+                    type="text"
+                    value={formData.doctorMci}
+                    onChange={(e) => setFormData({ ...formData, doctorMci: e.target.value })}
+                    placeholder="MCI-2024-88492"
+                    className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-white"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Specialization Area</label>
+                <input
+                  type="text"
+                  value={formData.doctorSpecialization}
+                  onChange={(e) => setFormData({ ...formData, doctorSpecialization: e.target.value })}
+                  placeholder="Internal Medicine & Emergency Triage"
+                  className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-white"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">Assigned PHC / Hub</label>
+                  <input
+                    type="text"
+                    value={formData.doctorHospital}
+                    onChange={(e) => setFormData({ ...formData, doctorHospital: e.target.value })}
+                    placeholder="Rampur PHC Tele-Hub"
+                    className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">Contact Phone</label>
+                  <input
+                    type="tel"
+                    value={formData.doctorPhone}
+                    onChange={(e) => setFormData({ ...formData, doctorPhone: e.target.value })}
+                    placeholder="+91 98765 43210"
+                    className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-white"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black rounded-xl text-sm shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 transition-all"
+              >
+                <span>Authorize & Launch Doctor Portal</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: Register New ASHA Worker */}
+      {activeModal === 'asha-register' && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+          <div className="bg-slate-900 w-full max-w-lg rounded-3xl border border-emerald-800/80 p-6 shadow-2xl space-y-5 relative text-slate-100">
+            <button
+              onClick={() => setActiveModal(null)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                <UserCheck className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white">Register ASHA Field Worker</h3>
+                <p className="text-xs text-slate-400">Initialize village offline triage station</p>
+              </div>
+            </div>
+
+            <form onSubmit={handleRegisterNewAsha} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">
+                  ASHA Worker Name <span className="text-red-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={formData.ashaName}
+                  onChange={(e) => setFormData({ ...formData, ashaName: e.target.value })}
+                  placeholder="e.g. Pooja Sharma"
+                  required
+                  className="w-full px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm font-semibold text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">Village / Sub-Centre</label>
+                  <input
+                    type="text"
+                    value={formData.ashaVillage}
+                    onChange={(e) => setFormData({ ...formData, ashaVillage: e.target.value })}
+                    placeholder="Rampur Khurd Sub-Centre"
+                    className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">District / State</label>
+                  <input
+                    type="text"
+                    value={formData.ashaDistrict}
+                    onChange={(e) => setFormData({ ...formData, ashaDistrict: e.target.value })}
+                    placeholder="Varanasi, Uttar Pradesh"
+                    className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-white"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">ASHA ID / Badge Number</label>
+                  <input
+                    type="text"
+                    value={formData.ashaId}
+                    onChange={(e) => setFormData({ ...formData, ashaId: e.target.value })}
+                    placeholder="ASHA-UP-5829"
+                    className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">Phone Number</label>
+                  <input
+                    type="tel"
+                    value={formData.ashaPhone}
+                    onChange={(e) => setFormData({ ...formData, ashaPhone: e.target.value })}
+                    placeholder="+91 98123 45678"
+                    className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs font-semibold text-white"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black rounded-xl text-sm shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all"
+              >
+                <span>Initialize & Open ASHA Field App</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>
