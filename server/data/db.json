@@ -65,9 +65,61 @@
       "abhaId": "91-4829-1029-4820",
       "createdBy": "ASHA-Pooja-Sharma",
       "createdAt": "2026-08-23T05:19:27.531Z"
+    },
+    {
+      "_id": "pat-mt5dnrpp-3mus0",
+      "name": "bala",
+      "age": 18,
+      "gender": "Male",
+      "phone": "0987654321",
+      "village": "Rampur Khurd",
+      "abhaId": "91-4829-1029-4820",
+      "createdBy": "ASHA-Pooja-Sharma",
+      "createdAt": "2026-08-23T05:39:32.749Z"
     }
   ],
   "consultations": [
+    {
+      "_id": "cons-mt5dnrpp-nv7fp",
+      "localQueueId": "cons-mt5dnrpp-nv7fp",
+      "patientId": "pat-mt5dnrpp-3mus0",
+      "patientName": "bala",
+      "patientAge": 18,
+      "patientGender": "Male",
+      "patientVillage": "Rampur Khurd",
+      "patientPhone": "0987654321",
+      "patientAbhaId": "91-4829-1029-4820",
+      "symptoms": {
+        "text": "Severe chest pain and heavy pressure, cold sweating and difficulty breathing.",
+        "voiceTranscript": "Severe chest pain and heavy pressure, cold sweating and difficulty breathing.",
+        "duration": "1 day",
+        "fever": false,
+        "feverDays": 0,
+        "cough": false,
+        "chestPain": false,
+        "sweating": false,
+        "breathingDifficulty": true,
+        "minorAche": false,
+        "vitals": {
+          "bp": "120/80",
+          "pulse": "76",
+          "spo2": "98%",
+          "temp": "98.6°F"
+        }
+      },
+      "priorityTag": "Critical",
+      "triageReason": "Difficulty breathing / Respiratory distress detected",
+      "urgencyScore": 85,
+      "actionAdvice": "HIGH PRIORITY: Monitor SpO2 and vitals, arrange expedited Doctor tele-consultation.",
+      "syncStatus": "synced",
+      "createdAt": "2026-08-23T05:39:32.749Z",
+      "syncedAt": "2026-08-23T05:39:32.768Z",
+      "createdBy": "ASHA-Pooja-Sharma",
+      "doctorId": null,
+      "doctorName": null,
+      "consultStatus": "pending",
+      "prescription": null
+    },
     {
       "_id": "cons-e2e-1787462756745",
       "localQueueId": "cons-e2e-1787462756745",
@@ -373,6 +425,18 @@
     }
   ],
   "syncLogs": [
+    {
+      "id": "sync-d591fb52",
+      "syncedCount": 1,
+      "timestamp": "2026-08-23T05:39:32.769Z",
+      "items": [
+        {
+          "id": "cons-mt5dnrpp-nv7fp",
+          "patient": "bala",
+          "priority": "Critical"
+        }
+      ]
+    },
     {
       "id": "sync-ffd29817",
       "syncedCount": 1,
