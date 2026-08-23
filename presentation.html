@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SanjeevaniConnect Presentation Deck</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .slide { display: none; }
+    .slide.active { display: flex; animation: fadeIn 0.4s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+  </style>
+</head>
+<body class="bg-[#080d1a] text-slate-100 h-screen w-screen flex flex-col justify-between overflow-hidden select-none">
+  
+  <!-- Ambient background glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+  <div class="absolute bottom-0 right-1/4 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <!-- Top Bar -->
+  <header class="relative z-10 px-8 py-4 flex items-center justify-between border-b border-slate-800/80 bg-slate-950/40 backdrop-blur-md">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-xl bg-cyan-400 flex items-center justify-center text-slate-950 font-black">
+        <i class="fa-solid fa-heart-pulse"></i>
+      </div>
+      <span class="font-extrabold text-lg tracking-tight">Sanjeevani<span class="text-cyan-400">Connect</span></span>
+      <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-bold ml-2">Project Presentation Deck</span>
+    </div>
+
+    <div class="flex items-center gap-4 text-xs font-semibold text-slate-400">
+      <span id="slideCounter">Slide 1 of 8</span>
+      <button onclick="toggleFullScreen()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-colors" title="Full Screen">
+        <i class="fa-solid fa-expand"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Container -->
+  <main class="relative z-10 flex-1 max-w-6xl w-full mx-auto px-6 py-6 flex items-center justify-center">
+    
+    <!-- SLIDE 1: Title -->
+    <div class="slide active flex-col items-center text-center space-y-6 max-w-4xl" data-slide="1">
+      <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-slate-950 text-3xl shadow-2xl shadow-cyan-500/30">
+        <i class="fa-solid fa-heart-pulse"></i>
+      </div>
+      <h1 class="text-5xl sm:text-6xl font-black tracking-tight text-white">
+        Sanjeevani<span class="text-cyan-400">Connect</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-300 font-medium max-w-2xl">
+        Offline-First Telemedicine & Deterministic Clinical Triage Platform for Rural India
+      </p>
+      <div class="grid grid-cols-3 gap-8 pt-6 border-t border-slate-800 w-full max-w-lg">
+        <div><div class="text-2xl font-black text-cyan-400">2,400+</div><div class="text-xs text-slate-500 font-bold">VILLAGES COVERED</div></div>
+        <div><div class="text-2xl font-black text-white">1.2L+</div><div class="text-xs text-slate-500 font-bold">LIVES IMPACTED</div></div>
+        <div><div class="text-2xl font-black text-emerald-400">340</div><div class="text-xs text-slate-500 font-bold">DOCTORS ONLINE</div></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Problem Statement -->
+    <div class="slide flex-col space-y-6 w-full max-w-4xl" data-slide="2">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">01 / Challenge</span>
+        <h2 class="text-3xl font-black text-white mt-1">The Rural Healthcare Divide</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center text-lg"><i class="fa-solid fa-wifi-slash"></i></div>
+          <h3 class="font-bold text-white text-base">Zero Connectivity</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Telemedicine apps assume 4G/5G broadband, failing completely in remote Sub-Centres with zero signal.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg"><i class="fa-solid fa-language"></i></div>
+          <h3 class="font-bold text-white text-base">Language & UI Literacy</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Elderly rural patients cannot operate complex smartphone interfaces. Care must be ASHA-assisted.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-lg"><i class="fa-solid fa-truck-medical"></i></div>
+          <h3 class="font-bold text-white text-base">Emergency Triage Delay</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Chest pain, stroke, and severe respiratory cases lose the golden hour due to absence of local triage rules.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Core Solution -->
+    <div class="slide flex-col space-y-6 w-full max-w-4xl" data-slide="3">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">02 / Innovation</span>
+        <h2 class="text-3xl font-black text-white mt-1">Our Offline-First Solution</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-cyan-500/40 space-y-3 shadow-lg shadow-cyan-500/10">
+          <h3 class="font-bold text-cyan-300 text-lg">📱 100% Offline Intake</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">• Demographic registration hits local storage first<br>• Vernacular voice intake in 11 languages<br>• Fully operable in Airplane Mode</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-emerald-500/40 space-y-3 shadow-lg shadow-emerald-500/10">
+          <h3 class="font-bold text-emerald-300 text-lg">🧠 On-Device Triage</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">• Pure deterministic ICMR clinical decision table<br>• Zero cloud latency for life-threatening cases<br>• Stat Aspirin/ACS guidance instantly</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-blue-500/40 space-y-3 shadow-lg shadow-blue-500/10">
+          <h3 class="font-bold text-blue-300 text-lg">⚡ 3-State Sync Queue</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">• 🔴 Offline → 🟡 Syncing → 🟢 Synced<br>• Background sync whenever signal blips<br>• Automatic conflict resolution</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Triage Engine -->
+    <div class="slide flex-col space-y-5 w-full max-w-4xl" data-slide="4">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">03 / Clinical Engine</span>
+        <h2 class="text-3xl font-black text-white mt-1">ICMR Deterministic Decision Table</h2>
+      </div>
+      <div class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/90 text-xs">
+        <table class="w-full text-left">
+          <thead class="bg-slate-800/90 text-cyan-400 font-bold uppercase">
+            <tr>
+              <th class="p-3">Symptoms / Red Flags</th>
+              <th class="p-3">Age</th>
+              <th class="p-3">Priority Tag</th>
+              <th class="p-3">Standard Protocol Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-slate-300">
+            <tr class="bg-red-950/20 font-semibold"><td class="p-3 text-white">Chest pain + Cold Sweating</td><td class="p-3">> 40y</td><td class="p-3 text-red-400 font-bold">CRITICAL (95)</td><td class="p-3">ACS Loading Protocol (Aspirin 325mg chewable + 108 Emergency Ambulance)</td></tr>
+            <tr class="bg-red-950/10 font-semibold"><td class="p-3 text-white">Breathing difficulty OR Fever > 3 days</td><td class="p-3">Any</td><td class="p-3 text-red-400 font-bold">CRITICAL (90)</td><td class="p-3">Nebulization + CBC/Dengue tests at PHC + SpO2 monitor</td></tr>
+            <tr><td class="p-3 text-white">Fever (&le;3 days) + Cough</td><td class="p-3">Any</td><td class="p-3 text-blue-400 font-bold">ROUTINE (45)</td><td class="p-3">Uncomplicated viral URTI (Paracetamol + Cetirizine)</td></tr>
+            <tr><td class="p-3 text-white">Minor ache / Mild cold, no fever</td><td class="p-3">Any</td><td class="p-3 text-emerald-400 font-bold">SELF-CARE (15)</td><td class="p-3">Home supportive remedies + ASHA follow-up in 48 hours</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Unified Portals -->
+    <div class="slide flex-col space-y-6 w-full max-w-4xl" data-slide="5">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">04 / Ecosystem</span>
+        <h2 class="text-3xl font-black text-white mt-1">Multi-Portal Experience</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl bg-slate-900 border border-emerald-500/40 space-y-2">
+          <div class="text-2xl">👩‍⚕️</div>
+          <h3 class="font-bold text-emerald-400 text-base">ASHA Worker App</h3>
+          <p class="text-xs text-slate-400">Demographic intake, 11-language speech keyword extraction, pure on-device triage table, outdoor high-contrast mode.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900 border border-blue-500/40 space-y-2">
+          <div class="text-2xl">👨‍⚕️</div>
+          <h3 class="font-bold text-blue-400 text-base">Doctor Dashboard</h3>
+          <p class="text-xs text-slate-400">Real-time Socket.io priority queue, audible siren alert for emergencies, WebRTC video with 2G fallback, automated e-Rx.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900 border border-purple-500/40 space-y-2">
+          <div class="text-2xl">👤</div>
+          <h3 class="font-bold text-purple-400 text-base">Patient Portal</h3>
+          <p class="text-xs text-slate-400">Digital ABHA health card, pharmacy QR code, medicine schedule with audio readout in 11 languages, 1-click PDF download.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Automated Prescriptions & PDF -->
+    <div class="slide flex-col space-y-6 w-full max-w-4xl" data-slide="6">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">05 / Clinical e-Rx</span>
+        <h2 class="text-3xl font-black text-white mt-1">Automated Medical Prescriptions & PDF</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
+          <div class="text-cyan-400 text-xl font-bold"><i class="fa-solid fa-file-pdf"></i> Standardized ICMR / NLEM PDF</div>
+          <p class="text-xs text-slate-400 leading-relaxed">• Automatically formulates generic NLEM drugs based on symptoms and pediatric vs adult age.<br>• Includes official digital signature stamp, MCI registration, and ABHA QR code.<br>• 1-Click download for both Doctor and Patient.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
+          <div class="text-emerald-400 text-xl font-bold"><i class="fa-solid fa-volume-high"></i> Vernacular Audio Readout</div>
+          <p class="text-xs text-slate-400 leading-relaxed">• Solves rural prescription illiteracy.<br>• Patient clicks 🔊 to hear morning/afternoon/night dosages and dietary instructions spoken in their mother tongue (Hindi, Tamil, Telugu, etc.).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Tech Stack -->
+    <div class="slide flex-col space-y-5 w-full max-w-4xl" data-slide="7">
+      <div class="border-b border-slate-800 pb-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">06 / Architecture</span>
+        <h2 class="text-3xl font-black text-white mt-1">Modern & Resilient Tech Stack</h2>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800"><div class="text-cyan-400 text-2xl mb-1"><i class="fa-brands fa-react"></i></div><div class="font-bold text-sm text-white">React 18 + Vite</div><div class="text-[11px] text-slate-500">Frontend UI</div></div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800"><div class="text-emerald-400 text-2xl mb-1"><i class="fa-solid fa-database"></i></div><div class="font-bold text-sm text-white">LocalStorage Engine</div><div class="text-[11px] text-slate-500">Offline-First Queue</div></div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800"><div class="text-green-500 text-2xl mb-1"><i class="fa-brands fa-node-js"></i></div><div class="font-bold text-sm text-white">Node + Socket.io</div><div class="text-[11px] text-slate-500">Real-Time PHC Hub</div></div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800"><div class="text-blue-400 text-2xl mb-1"><i class="fa-solid fa-video"></i></div><div class="font-bold text-sm text-white">WebRTC P2P</div><div class="text-[11px] text-slate-500">2G Low-Bandwidth Call</div></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Impact & Conclusion -->
+    <div class="slide flex-col items-center text-center space-y-6 max-w-3xl" data-slide="8">
+      <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl">
+        <i class="fa-solid fa-hand-holding-medical"></i>
+      </div>
+      <h2 class="text-4xl font-black text-white">
+        Bridging Every Village to Specialist Care
+      </h2>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        SanjeevaniConnect turns every ASHA worker's smartphone into an offline emergency clinical triage and teleconsultation station — saving rural lives during the critical golden hour.
+      </p>
+      <div class="p-4 rounded-2xl bg-slate-900 border border-cyan-500/40 text-xs font-bold text-cyan-300">
+        🌿 100% ABDM & ICMR Compliant • Open-Source • Production Ready
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bottom Navigation Controls -->
+  <footer class="relative z-10 px-8 py-4 flex items-center justify-between border-t border-slate-800/80 bg-slate-950/40 backdrop-blur-md">
+    <div class="text-xs text-slate-500">
+      Use <kbd class="px-2 py-0.5 bg-slate-800 rounded text-slate-300 font-mono">←</kbd> <kbd class="px-2 py-0.5 bg-slate-800 rounded text-slate-300 font-mono">→</kbd> arrow keys to navigate
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button onclick="prevSlide()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-all flex items-center gap-1.5">
+        <i class="fa-solid fa-chevron-left"></i>
+        <span>Previous</span>
+      </button>
+      <button onclick="nextSlide()" class="px-5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-slate-950 text-xs font-black transition-all flex items-center gap-1.5 shadow-md shadow-cyan-500/20">
+        <span>Next</span>
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+
+    function showSlide(n) {
+      const slides = document.querySelectorAll('.slide');
+      slides.forEach(s => s.classList.remove('active'));
+      
+      currentSlide = n;
+      if (currentSlide > totalSlides) currentSlide = 1;
+      if (currentSlide < 1) currentSlide = totalSlides;
+
+      const active = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
+      if (active) active.classList.add('active');
+
+      document.getElementById('slideCounter').innerText = `Slide ${currentSlide} of ${totalSlides}`;
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') nextSlide();
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+    });
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+  </script>
+</body>
+</html>
