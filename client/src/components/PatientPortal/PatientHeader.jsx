@@ -30,11 +30,11 @@ export const PatientHeader = ({ onLogout }) => {
                 {t.appTitle}
               </h1>
               <span className="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 border border-purple-300 dark:border-purple-800">
-                PATIENT PORTAL
+                {t.patientPortalBadge || 'PATIENT PORTAL'}
               </span>
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Welcome, <span className="font-bold text-slate-800 dark:text-slate-200">{currentUser?.name || 'Rameshwar Prasad'}</span> • Rampur Khurd
+              {t.welcomePatient || 'Welcome'}, <span className="font-bold text-slate-800 dark:text-slate-200">{currentUser?.name || 'Rameshwar Prasad'}</span> • {currentUser?.village || 'Rampur Khurd'}
             </p>
           </div>
         </div>

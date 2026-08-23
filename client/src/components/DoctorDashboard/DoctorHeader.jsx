@@ -37,11 +37,11 @@ export const DoctorHeader = ({ onLogout }) => {
                 {t.appTitle}
               </h1>
               <span className="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border border-blue-300 dark:border-blue-800">
-                DOCTOR PORTAL
+                {t.doctorPortalBadge || 'DOCTOR PORTAL'}
               </span>
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              <span className="font-medium text-slate-700 dark:text-slate-200">{currentUser?.name || 'Dr. Arvind Mehta (MD, AIIMS)'}</span> • PHC Tele-Hub
+              <span className="font-medium text-slate-700 dark:text-slate-200">{currentUser?.name || 'Dr. Arvind Mehta (MD, AIIMS)'}</span> • {t.welcomeDoctor || 'PHC Tele-Hub Doctor'}
             </p>
           </div>
         </div>
@@ -51,19 +51,19 @@ export const DoctorHeader = ({ onLogout }) => {
           {/* Critical Counter Badge */}
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-950/60 border border-red-300 dark:border-red-800 text-red-700 dark:text-red-300 text-xs font-bold shadow-2xs">
             <AlertTriangle className="w-4 h-4 text-red-600 animate-pulse" />
-            <span>{criticalCount} Critical</span>
+            <span>{criticalCount} {t.critical}</span>
           </div>
 
           {/* Routine Counter */}
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-xs font-bold shadow-2xs">
             <Clock className="w-4 h-4 text-blue-600" />
-            <span>{routineCount} Routine</span>
+            <span>{routineCount} {t.routine}</span>
           </div>
 
           {/* Completed Counter */}
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-bold shadow-2xs">
             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-            <span>{completedCount} Prescribed</span>
+            <span>{completedCount} {t.step4Rx || 'Prescribed'}</span>
           </div>
 
           {/* Language Selector */}

@@ -144,13 +144,13 @@ export const PatientPortal = () => {
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
           <div className="space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-white/20 rounded-full inline-block backdrop-blur-sm">
-              Ayushman Bharat Digital Health (ABDM Verified)
+              {t.digitalHealthCard || 'Ayushman Bharat Digital Health (ABDM Verified)'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
               {currentUser?.name || 'Rameshwar Prasad'}
             </h2>
             <div className="flex flex-wrap items-center gap-3 text-xs opacity-90">
-              <span>{currentUser?.age || 52} Years • {currentUser?.gender || 'Male'}</span>
+              <span>{currentUser?.age || 52} {t.age || 'Years'} • {currentUser?.gender === 'Female' ? t.female : t.male}</span>
               <span>•</span>
               <span className="flex items-center gap-1">
                 <MapPin className="w-3.5 h-3.5" />
@@ -168,7 +168,7 @@ export const PatientPortal = () => {
               <QrCode className="w-full h-full text-slate-800" />
             </div>
             <div className="text-xs">
-              <span className="font-bold block text-white">Digital Health QR</span>
+              <span className="font-bold block text-white">{t.qrScanPharmacy || 'Digital Health QR'}</span>
               <span className="opacity-75 block text-[11px]">Scan at PHC / Pharmacy</span>
             </div>
           </div>
@@ -179,7 +179,7 @@ export const PatientPortal = () => {
       <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
         <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
           <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-            Current Clinical Case Status
+            {t.caseStatusTitle || 'Current Clinical Case Status'}
           </h3>
 
           {/* Quick PDF Download Button in Status Bar */}
@@ -188,7 +188,7 @@ export const PatientPortal = () => {
             className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-purple-600 hover:bg-purple-700 text-white flex items-center gap-1.5 shadow-sm transition-all"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Download e-Prescription PDF</span>
+            <span>{t.downloadPdf || 'Download e-Prescription PDF'}</span>
           </button>
         </div>
 
@@ -197,10 +197,10 @@ export const PatientPortal = () => {
           <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-xs">
             <div className="flex items-center gap-1.5 font-bold text-emerald-800 dark:text-emerald-300 mb-1">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>1. Field Intake</span>
+              <span>{t.step1Intake || '1. Field Intake'}</span>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-400">
-              Recorded by ASHA Worker (Pooja Sharma)
+              {t.ashaApp || 'Recorded by ASHA Worker'}
             </p>
           </div>
 
@@ -208,7 +208,7 @@ export const PatientPortal = () => {
           <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-xs">
             <div className="flex items-center gap-1.5 font-bold text-emerald-800 dark:text-emerald-300 mb-1">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>2. On-Device Triage</span>
+              <span>{t.step2Triage || '2. On-Device Triage'}</span>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-400">
               Tag: <span className="font-bold text-red-600 dark:text-red-400">{activeConsultation?.priorityTag || 'Routine'}</span>
@@ -219,10 +219,10 @@ export const PatientPortal = () => {
           <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-xs">
             <div className="flex items-center gap-1.5 font-bold text-emerald-800 dark:text-emerald-300 mb-1">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>3. Synced with PHC</span>
+              <span>{t.step3Synced || '3. Synced with PHC'}</span>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-400">
-              Transmitted to Medical Officer
+              {t.syncStatusSynced || 'Transmitted to Medical Officer'}
             </p>
           </div>
 
@@ -230,10 +230,10 @@ export const PatientPortal = () => {
           <div className="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/60 border border-purple-300 dark:border-purple-800 text-purple-900 dark:text-purple-200 text-xs">
             <div className="flex items-center gap-1.5 font-bold mb-1">
               <CheckCircle2 className="w-4 h-4 text-purple-600" />
-              <span>4. e-Prescription</span>
+              <span>{t.step4Rx || '4. e-Prescription'}</span>
             </div>
             <p className="text-[11px] opacity-80">
-              Ready for Download & Pharmacy
+              {t.downloadPdf || 'Ready for Download & Pharmacy'}
             </p>
           </div>
         </div>
@@ -247,10 +247,10 @@ export const PatientPortal = () => {
               <div>
                 <h3 className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                   <FileText className="w-5 h-5 text-purple-600" />
-                  <span>Doctor's Official e-Prescription</span>
+                  <span>{t.officialRxTitle || "Doctor's Official e-Prescription"}</span>
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Prescribing Physician: <span className="font-bold text-slate-800 dark:text-slate-200">{activeConsultation?.doctorName || 'Dr. Arvind Mehta (MD, AIIMS)'}</span>
+                  {t.prescribingPhysician || 'Prescribing Physician'}: <span className="font-bold text-slate-800 dark:text-slate-200">{activeConsultation?.doctorName || 'Dr. Arvind Mehta (MD, AIIMS)'}</span>
                 </p>
               </div>
 
@@ -265,7 +265,7 @@ export const PatientPortal = () => {
                   }`}
                 >
                   {isPlayingAudio ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                  <span>{isPlayingAudio ? 'Stop Voice' : '🗣️ Listen in Audio'}</span>
+                  <span>{isPlayingAudio ? (t.stopAudio || 'Stop Voice') : (t.listenAudio || '🗣️ Listen in Audio')}</span>
                 </button>
 
                 <button
@@ -273,7 +273,7 @@ export const PatientPortal = () => {
                   className="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 flex items-center gap-1.5 shadow-sm transition-all"
                 >
                   <Eye className="w-4 h-4" />
-                  <span>View Details</span>
+                  <span>{t.viewDetails || 'View Details'}</span>
                 </button>
 
                 <button
@@ -282,7 +282,7 @@ export const PatientPortal = () => {
                   className="px-4 py-2 rounded-xl text-xs font-black bg-purple-600 hover:bg-purple-700 text-white flex items-center gap-1.5 shadow-md transition-all active:scale-95"
                 >
                   <Download className="w-4 h-4" />
-                  <span>Download PDF</span>
+                  <span>{t.downloadPdf || 'Download PDF'}</span>
                 </button>
               </div>
             </div>
