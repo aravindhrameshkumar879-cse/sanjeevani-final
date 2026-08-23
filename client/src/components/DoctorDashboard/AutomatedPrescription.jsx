@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext.jsx';
 import { generatePrescriptionPdf } from '../../utils/pdfGenerator.js';
+import { generateAutomatedPrescription } from '../../utils/aiPrescribeEngine.js';
 import { LocalStorageService } from '../../services/storage.js';
 import { 
   FileText, 
@@ -42,6 +43,24 @@ export const AutomatedPrescription = ({ consultation, onClose, onPrescriptionSav
   }, [consultation]);
 
   const fetchAutoPrescription = async () => {
+    // 1. Instant on-device computation (zero latency offline guarantee)
+    const localRec = generateAutomatedPrescription({
+      age: consultation.patientAge,
+      gender: consultation.patientGender,
+      symptoms: consultation.symptoms,
+      priorityTag: consultation.priorityTag,
+      triageReason: consultation.triageReason
+    });
+
+    if (localRec) {
+      setMedicines(localRec.medicines || []);
+      setNotes(localRec.notes || '');
+      setDietAdvice(localRec.dietAdvice || '');
+      setWarnings(localRec.warnings || []);
+      setRegimenType(localRec.regimenType || '');
+    }
+
+    // 2. Fetch from backend API if online for server-side updates
     try {
       const res = await fetch('/api/ai-prescribe', {
         method: 'POST',
